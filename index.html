@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пошук фільмів</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0e1821;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: #e9edf2;
+            padding: 20px;
+        }
+
+        .container {
+            width: 440px;
+            max-width: 100%;
+            background: #1d2b38;
+            border: 1px solid #344351;
+            border-radius: 27px;
+            padding: 28px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            font-size: 15px;
+            letter-spacing: 2px;
+            color: #aebac8;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #0e1821;
+            border: 1px solid #344351;
+            border-radius: 30px;
+            padding: 0 16px;
+            margin-bottom: 26px;
+            height: 50px;
+        }
+
+        .search-icon {
+            color: #d4b66c;
+            font-size: 20px;
+            margin-right: 12px;
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        input::placeholder {
+            color: #aeb8c4;
+        }
+
+        .movie {
+            text-align: center;
+        }
+
+        .poster {
+            width: 220px;
+            height: 332px;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+            margin: 0 auto 22px;
+        }
+
+        .movie h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #f2eee3;
+        }
+
+        .rating {
+            display: inline-block;
+            background: #101a23;
+            border: 1px solid #344351;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #d9dce3;
+        }
+
+        .star {
+            color: #e4c16c;
+        }
+
+        .description {
+            border-top: 1px solid #344351;
+            margin-top: 20px;
+            padding-top: 18px;
+            color: #aeb9c7;
+            font-size: 14px;
+            line-height: 1.65;
+            text-align: center;
+        }
+
+        .not-found {
+            display: none;
+            text-align: center;
+            color: #aeb9c7;
+            padding: 35px 0;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 22px;
+            }
+
+            .poster {
+                width: 190px;
+                height: 285px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h3>ПОШУК ФІЛЬМІВ</h3>
+
+        <div class="search-box">
+            <span class="search-icon">⌕</span>
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Введи назву фільму..."
+            >
+        </div>
+
+        <div class="movie" id="movie">
+
+            <img
+                class="poster"
+                src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6M9XBx.jpg"
+                alt="Інтерстеллар"
+            >
+
+            <h2>Інтерстеллар</h2>
+
+            <div class="rating">
+                <span class="star">★</span>
+                <b>8.7</b> / 10 IMDb
+            </div>
+
+            <p class="description">
+                Коли Земля стає непридатною для життя,
+                колишній пілот Купер залишає родину
+                й вирушає з командою дослідників
+                шукати новий дім для людства.
+            </p>
+
+        </div>
+
+        <div class="not-found" id="notFound">
+            Фільм не знайдено 😕
+        </div>
+
+    </div>
+    <script>
+        const search = document.getElementById("search");
+        const movie = document.getElementById("movie");
+        const notFound = document.getElementById("notFound");
+
+        search.addEventListener("input", function () {
+
+            const value = search.value
+                .toLowerCase()
+                .trim();
+
+            if (
+                value === "" ||
+                "інтерстеллар".includes(value) ||
+                "interstellar".includes(value)
+            ) {
+                movie.style.display = "block";
+                notFound.style.display = "none";
+            } else {
+                movie.style.display = "none";
+                notFound.style.display = "block";
+            }
+
+        });
+    </script>
+
+</body>
+</html>
