@@ -1,108 +1,400 @@
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 body {
-min-height: 100vh;
-background: #0e1821;
-display: flex;
-justify-content: center;
-align-items: center;
-font-family: Arial, sans-serif;
-color: #e9edf2;
-padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background: #0e1821;
+    color: #e9edf2;
+    font-family: Arial, sans-serif;
 }
+
+/* Загальний блок */
+
+.app-layout {
+    width: 100%;
+    max-width: 1050px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 22px;
+}
+
+/* Основна картка */
+
 .container {
-width: 440px;
-max-width: 100%;
-background: #1d2b38;
-border: 1px solid #344351;
-border-radius: 27px;
-padding: 28px;
-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    order: 1;
+    flex: 1;
+    min-width: 0;
+    padding: 28px;
+    background: #1d2b38;
+    border: 1px solid #344351;
+    border-radius: 27px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    transition: 0.3s ease;
 }
+
+.container:hover {
+    border-color: #526477;
+    transform: translateY(-3px);
+}
+
 h3 {
-font-size: 15px;
-letter-spacing: 2px;
-color: #aebac8;
-margin-bottom: 20px;
+    margin-bottom: 20px;
+    color: #aebac8;
+    font-size: 15px;
+    letter-spacing: 2px;
 }
+
+/* Пошук */
+
 .search-box {
-display: flex;
-align-items: center;
-background: #0e1821;
-border: 1px solid #344351;
-border-radius: 30px;
-padding: 0 16px;
-margin-bottom: 26px;
-height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    margin-bottom: 26px;
+    padding: 0 16px;
+    background: #0e1821;
+    border: 1px solid #344351;
+    border-radius: 30px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
+
+.search-box:focus-within {
+    border-color: #526477;
+    box-shadow: none;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+}
+
+.search-box input::placeholder {
+    color: #aeb8c4;
+}
+
 .search-icon {
-color: #d4b66c;
-font-size: 20px;
-margin-right: 12px;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #d4b66c;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.25s ease;
 }
-input {
-width: 100%;
-background: transparent;
-border: none;
-outline: none;
-color: white;
-font-size: 16px;
+
+.search-icon:hover {
+    color: #ffe09a;
+    transform: scale(1.2);
+    text-shadow: 0 0 12px #d4b66c;
 }
-input::placeholder {
-color: #aeb8c4;
+
+.search-icon:active {
+    transform: scale(0.9);
 }
+
+.search-icon:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+.search-box input:focus-visible,
+.search-icon:focus-visible {
+    outline: none;
+}
+
+/* Фільм */
+
 .movie {
-text-align: center;
+    text-align: center;
+    animation: appear 0.4s ease;
 }
+
 .poster {
-width: 220px;
-height: 332px;
-object-fit: cover;
-border-radius: 14px;
-display: block;
-margin: 0 auto 22px;
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    margin: 0 auto 22px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
 }
+
+.poster:hover {
+    transform: scale(1.03);
+}
+
 .movie h2 {
-font-size: 24px;
-margin-bottom: 12px;
-color: #f2eee3;
+    margin-bottom: 12px;
+    color: #f2eee3;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 10px rgba(212, 182, 108, 0.15);
 }
+
 .rating {
-display: inline-block;
-background: #101a23;
-border: 1px solid #344351;
-padding: 7px 13px;
-border-radius: 20px;
-font-size: 13px;
-color: #d9dce3;
+    display: inline-block;
+    padding: 7px 13px;
+    border: 1px solid #526071;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #172431, #101a23);
+    color: #d9dce3;
+    font-size: 13px;
 }
+
 .star {
-color: #e4c16c;
+    color: #e4c16c;
 }
+
 .description {
-border-top: 1px solid #344351;
-margin-top: 20px;
-padding-top: 18px;
-color: #aeb9c7;
-font-size: 14px;
-line-height: 1.65;
-text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #344351;
+    color: #aeb9c7;
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: left;
 }
+
+/* Кнопки */
+
+.movie-link {
+    display: block;
+    width: fit-content;
+    margin: 22px auto 0;
+    padding: 12px 28px;
+    background: #d4b66c;
+    color: #172431;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: 0.3s ease;
+}
+
+.movie-link:hover {
+    background: #ffe09a;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 182, 108, 0.25);
+}
+
+.add-button {
+    display: block;
+    width: fit-content;
+    margin: 15px auto 0;
+    padding: 12px 25px;
+    background: #293d4d;
+    color: #e9edf2;
+    border: 1px solid #526477;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-button:hover {
+    background: #354d60;
+    border-color: #d4b66c;
+    transform: translateY(-2px);
+}
+
+.add-button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* Бібліотека справа */
+
+.library {
+    order: 2;
+    width: 290px;
+    flex-shrink: 0;
+    padding: 25px 18px;
+    background: #1d2b38;
+    border: 1px solid #344351;
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    transition: 0.3s ease;
+}
+
+.library:hover {
+    border-color: #526477;
+}
+
+.library h2 {
+    color: #e4c16c;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+
+.library-subtitle {
+    margin-top: 8px;
+    margin-bottom: 22px;
+    color: #8998a8;
+    font-size: 13px;
+}
+
+.library-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 540px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.empty-library {
+    padding: 20px 5px;
+    color: #8998a8;
+    font-size: 13px;
+    text-align: center;
+}
+
+.library-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px;
+    background: #14212c;
+    border: 1px solid #344351;
+    border-radius: 13px;
+    transition: 0.25s ease;
+}
+
+.library-item:hover {
+    border-color: #d4b66c;
+    transform: translateX(3px);
+}
+
+.library-poster {
+    width: 52px;
+    height: 72px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.library-info {
+    flex: 1;
+    min-width: 0;
+    cursor: pointer;
+}
+
+.library-title {
+    color: #e9edf2;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.library-rating {
+    margin-top: 7px;
+    color: #d4b66c;
+    font-size: 12px;
+}
+
+.remove-button {
+    width: 27px;
+    height: 27px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 7px;
+    background: #293744;
+    color: #aeb9c7;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.remove-button:hover {
+    background: #743e42;
+    color: white;
+}
+
+/* Повідомлення */
+
 .not-found {
-display: none;
-text-align: center;
-color: #aeb9c7;
-padding: 35px 0;
+    display: none;
+    padding: 35px 0;
+    color: #aeb9c7;
+    text-align: center;
+    animation: appear 0.3s ease;
 }
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Телефони та планшети */
+
+@media (max-width: 750px) {
+    body {
+        align-items: flex-start;
+        padding: 18px;
+    }
+
+    .app-layout {
+        flex-direction: column;
+    }
+
+    .container {
+        order: 1;
+    }
+
+    .library {
+        order: 2;
+        width: 100%;
+    }
+
+    .library-list {
+        max-height: 300px;
+    }
+}
+
 @media (max-width: 480px) {
-.container {
-padding: 22px;
-}
-.poster {
-    width: 190px;
-    height: 285px;
-}
+    .container {
+        padding: 22px;
+    }
+
+    .poster {
+        width: 190px;
+    }
+
+    .library {
+        padding: 20px 15px;
+    }
 }
